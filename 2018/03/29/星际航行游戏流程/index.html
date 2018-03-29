@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ioc?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ioc?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ioc?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ioc?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity 3D," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一节 创建工程1、创建3D项目工程   创建一个文件夹，命名为_Scene   新建场景，然后保存【CTRL+S】，将其命名为myscene2、设置游戏窗口的大小  400*600   选择文件菜单，单击Build settings3、拖动飞船模型进入层级视图，重置其transform属性  重命名为Player4、添加刚体组件5、取消使用重力选项6、为飞船添加网格碰撞体7、勾选  Convex">
+<meta name="keywords" content="Unity 3D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="星际航行游戏流程">
+<meta property="og:url" content="http://309sy.me/2018/03/29/星际航行游戏流程/index.html">
+<meta property="og:site_name" content="我是sy">
+<meta property="og:description" content="第一节 创建工程1、创建3D项目工程   创建一个文件夹，命名为_Scene   新建场景，然后保存【CTRL+S】，将其命名为myscene2、设置游戏窗口的大小  400*600   选择文件菜单，单击Build settings3、拖动飞船模型进入层级视图，重置其transform属性  重命名为Player4、添加刚体组件5、取消使用重力选项6、为飞船添加网格碰撞体7、勾选  Convex">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-29T07:24:15.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="星际航行游戏流程">
+<meta name="twitter:description" content="第一节 创建工程1、创建3D项目工程   创建一个文件夹，命名为_Scene   新建场景，然后保存【CTRL+S】，将其命名为myscene2、设置游戏窗口的大小  400*600   选择文件菜单，单击Build settings3、拖动飞船模型进入层级视图，重置其transform属性  重命名为Player4、添加刚体组件5、取消使用重力选项6、为飞船添加网格碰撞体7、勾选  Convex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://309sy.me/2018/03/29/星际航行游戏流程/"/>
+
+
+
+
+
+  <title>星际航行游戏流程 | 我是sy</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是sy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://309sy.me/2018/03/29/星际航行游戏流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是sy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">星际航行游戏流程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T14:31:10+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity-3D/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity 3D</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/29/星际航行游戏流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/29/星际航行游戏流程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第一节-创建工程"><a href="#第一节-创建工程" class="headerlink" title="第一节 创建工程"></a>第一节 创建工程</h2><p>1、创建3D项目工程<br>   创建一个文件夹，命名为_Scene<br>   新建场景，然后保存【CTRL+S】，将其命名为myscene<br>2、设置游戏窗口的大小  400*600<br>   选择文件菜单，单击Build settings<br>3、拖动飞船模型进入层级视图，重置其transform属性  重命名为Player<br>4、添加刚体组件<br>5、取消使用重力选项<br>6、为飞船添加网格碰撞体<br>7、勾选  Convex、IS Trigger<br>8、更换Mesh编辑框中的内容<br>   使用更为简单的模型来替换，便于在碰撞检测时节约资源<br>使用vehicle_playership_collider<br>替换网格碰撞体中的Mesh编辑框中的内容</p>
+<h2 id="第二节-添加尾焰"><a href="#第二节-添加尾焰" class="headerlink" title="第二节 添加尾焰"></a>第二节 添加尾焰</h2><p>9、为飞船添加尾部火焰效果<br>   火焰效果使用的是粒子系统的预制体<br>10、在预制体资源文件夹中找到engines_player<br>   预制体拖动到层级视图中的Player上，使其成为飞船的子对象；<br>11、调整摄像机的参数<br>12、将摄像机属性的Rotation  X设置为90<br>    position调整为（0，10，5）<br>13、设置摄像机属性  Clear Flags为  Solid Color<br>    设置摄像机投影属性Projection为正交投影<br>    设置摄像机Size属性为10</p>
+<h2 id="第三节-添加星空背景"><a href="#第三节-添加星空背景" class="headerlink" title="第三节 添加星空背景"></a>第三节 添加星空背景</h2><p>14、添加星空背景<br>15、拖动预制体StarField到层级视图中<br>    调整属性参数：<br>16、创建Quad平面  重置transform属性；（Reset），重命名为Background,更改其Rotation属性  （90，0，0）<br>17、选择Textures目录下的图片tile_nebula_green_dff<br>   拖动其到Background之上；<br>   更改其Scale的x 15    y  30<br>18、更改星空背景的position属性，将其y值设置为-10<br>   移除Background的Mesh Collider组件；<br>19、在Assets文件夹下新创建一个MyScript名称的脚本文件夹；<br>20、鼠标右键单击MyScript，选择Creat选项，创建一个名称为<br>     PlayerController的C#脚本<br>    创建并命名完毕，双击打开该脚本；</p>
+<h2 id="第四节-创建子弹"><a href="#第四节-创建子弹" class="headerlink" title="第四节 创建子弹"></a>第四节 创建子弹</h2><p>21、创建子弹<br>    新建一个空游戏对象，命名为Bolt，重置其Transform属性；<br>    添加刚体组件，取消勾选使用重力；<br>22、新建一个Quad对象，重命名为VFX，设置为Bolt的子对象；Rotation<br>    设置为（90，0，0）并移除Mesh Collider组件；<br>23、将Material目录中的材质对象fx_bolt_orange拖动到VFX上；<br>24、为Bolt添加胶囊碰撞体(Capsule Collider)，勾选触发器选项；<br>25、设置胶囊碰撞体的Direction为Z_Axis<br>    Radius  0.04   Height  0.65<br>26、在脚本文件夹新建脚本Mover.cs,并将其<br>拖动到Bolt对象上面；<br>27、生成子弹Bolt预制体；<br>    之后删除层级视图中的Bolt子弹游戏对象；<br>在Project视图中创建一个文件夹用以存放所有<br>预制体对象；_Prefabs<br>28、创建好预制体后，请将层级视图中的游戏对象Bolt删除掉；<br>29、子弹飞出边界，但是不会自动销毁？<br>    子弹无法自动发射？<br>    如何解决？<br>30、子弹自动发射，在PlayerController中进行设置；<br>31、在Player下创建一个空的子对象，重命名为<br>Shot Spawn,将其Position属性设置为（0，0，0.7）；<br>32、将Bolt预制体资源拖入到Player检视视图中的Shot编辑框内；<br>   将Plyaer下的子对象Shot Spawn拖入到检视视图中的Shot spawn编辑框内;<br>   将fireRate属性的数值设置为非零的数值；</p>
+<p>  fire1事件：是指当按下left ctrl键或者鼠标左键的时候能够触发<br>  该事件；</p>
+<h2 id="第五节-解决子弹自动销毁"><a href="#第五节-解决子弹自动销毁" class="headerlink" title="第五节 解决子弹自动销毁"></a>第五节 解决子弹自动销毁</h2><p>33、解决子弹自动销毁；<br>34、首先创建一个cube，命名为Boundary；重置Transform组件；<br>35、position设置为（0，0，5）<br>    scale属性设置为（15，1，20）<br>    在其Box Collider中选中触发器；<br>    在脚本文件夹中创建一个脚本名称为DestroyByBoundary.cs<br>    并将其拖到Boundary上；<br>36、添加障碍物小行星：<br>    在层级视图中创建一个空的游戏对象Asteroid，重置其transform组件，<br>   设置Position为（0，0，10）；添加刚体组件，取消重力选项；<br>   添加胶囊(capsule)碰撞体；同时选中触发器选项；<br>37、拖动Models文件夹下的prop_asteroid_01成为Asteroid的子对象；<br>38、调整碰撞体，使其更逼真；<br>    参数设置如下所示：<br>    Radius  0.5   Height   1.6   Direction   Z<br>39、脚本文件夹添加行星控制脚本  RandomRotator.cs,绑定到Asteroid<br>    对象上面；<br>40、行星运动速度为何逐渐减慢？<br>    angular  drag(角阻力)选项设置为  0</p>
+<h2 id="第五节-飞船的销毁"><a href="#第五节-飞船的销毁" class="headerlink" title="第五节 飞船的销毁"></a>第五节 飞船的销毁</h2><p>41、如何控制销毁？<br>    子弹击中行星，同时销毁子弹和行星；<br>    飞船碰撞行星，同时销毁飞船和行星；<br>42、新建脚本DestroyByContact.cs;<br>    绑定到Asteroid行星游戏对象上面；<br>43、运行游戏，为何当飞船没有射击的时候，小<br>    行星也会自动销毁？<br>44、测试，找出原因；<br>    print(other.name);<br>45、如何修正逻辑错误？<br>46、通过标签的方式标识游戏对象，加入if进行<br>    判定，当与行星碰撞的是Boundary对象时，<br>    就不销毁；否则执行之前的销毁逻辑；<br>     用Tag标签来标识游戏对象<br>     飞船的Tag标签为  Player<br>     子弹的Tag标签为  Bolt<br>     边界立方体标签为  Boundary<br>     行星的标签为    Asteroid<br>47、添加行星及飞船的爆炸效果<br>    打开脚本DestroyByContact.cs脚本：<br>    添加变量：</p>
+<h2 id="第六节-小行星运动、随机产生、批量生成"><a href="#第六节-小行星运动、随机产生、批量生成" class="headerlink" title="第六节 小行星运动、随机产生、批量生成"></a>第六节 小行星运动、随机产生、批量生成</h2><p>48、添加控制小行星运动的功能：<br>    拖动之前已经编辑好的Mover.cs脚本到<br>    Asteroid对象上面；在检视视图中设定Speed属性值为-5；与<br>子弹的运动方向相反；<br>49、运行游戏验证；离开编辑时其是否能够自动销毁？原因？<br>50、如何设置小行星的随机产生？<br>51、首先生成小行星的预制体、<br>52、然后删除层级视图中的Asteroid对象；<br>53、在层级视图中创建一个空的游戏对象GameController，重置<br>其Transform组件；<br>指定其Tag为GameController；<br>如不存在该Tag，则需添加创建该名称的Tag标签；<br>54、在Project视图的脚本文件夹中新创建一个<br>GameController.cs脚本；并将其拖动到GameController上；<br>SpawnValues  数值统一设置为 （6，0，14.5）</p>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><p>55、如何控制行星批量生成？<br>56、如何让批量生成的小行星错落有致？有一定的时间间隔？</p>
+<h2 id="第七节-添加音效"><a href="#第七节-添加音效" class="headerlink" title="第七节 添加音效"></a>第七节 添加音效</h2><p>57、音效的添加：<br>58：调整Project视图为单列布局，展开<br>Audio文件夹查看其中的音频文件；<br>59：展开预制体Prefabs文件夹，展开Explosions<br>文件夹，查看爆炸效果的预制体资源；<br>60、添加行星爆炸音效，将Audio文件夹中的explosion_asteroid音频<br>拖动到预制体资源explosion_asteroid上；<br>61、添加飞船爆炸音效，将Audio文件夹中的explosion_player音频<br>拖动到预制体资源explosion_player上；<br>62、选中预制体资源explosion_asteroid，在<br>检视视图中观察组件Audio Source<br>63、选中预制体资源explosion_player，在其检视<br>视图中观察组件Audio Source<br>64、勾选Audio Source中的Play On Awake,在唤醒时<br>自动播放；<br>65：添加飞船射击音频<br>将weapon_player音频文件拖动到飞船对象上；<br>66、不要勾选Play On Awake;<br>67、打开PlayerController.cs脚本文件，在脚本中的Fire1响应的if语句中添加一行代码：<br>GetComponent<audiosource>().Play();</audiosource></p>
+<h2 id="备注：添加音频方法有两种："><a href="#备注：添加音频方法有两种：" class="headerlink" title="备注：添加音频方法有两种："></a>备注：添加音频方法有两种：</h2><p>（1）直接拖动音频文件到游戏对象或者预制体资源上；<br>（2）选取游戏对象或者预制体资源，在inspector视图中<br>选择Add  Component，选择Audio，选择Audio Source<br>然后拖动音频资源到Audio Source的AudioClip输入框内；<br>68、添加背景音效，仿照上述方法（2）添加背景音效<br>添加到GameController游戏对象上；<br>勾选Play On Awake<br>如何让背景音效循环播放？<br>勾选Loop选项<br>69、添加计分文本<br>单击菜单GameObject，选择UI子菜单，单击Text选项，创建文本；<br>70、观察层级视图中的文本选项：<br>将Text重命名为ScoreText;表示得分信息；<br>71、选择ScoreText，在inspector视图中设置其<br>Text文本属性，输入该文本默认显示的文字内容；<br>72、调整ScoreText的文本大小、颜色、位置；<br>还可调整ScoreText的width和height<br>73、删除层级视图中的EventSystem项<br>74、当子弹击中小行星时让分值增加；<br>    增加分值后更新得分信息；<br>75、打开GameController.cs脚本：<br>添加属性信息：添加代码<br>76、打开DestroyByContact.cs脚本<br>添加属性：添加代码<br>77、回到层级视图，选择GameController游戏对象，在其inspector<br>属性中填充ScoreText文本框；<br>78、选择Asteroid预制体，在其inspector<br>属性中填充ScoreValue文本框；</p>
+<h2 id="Vector3类型扩展"><a href="#Vector3类型扩展" class="headerlink" title="Vector3类型扩展"></a>Vector3类型扩展</h2><p>Mathf.Clamp（）<br>float value<br>float xmin<br>float xmax<br>static float Clamp(float value,float xmin,float xmax)<br>若value的数值小于xmin,则返回xmin;若value的数值大于xmax，则返回xmax;<br>x:  -6     6<br>z:  -4    14</p>
+<p>素材：<a href=""></a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="sy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="sy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity-3D/" rel="tag"># Unity 3D</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/27/github-hexo收集的零碎资料/" rel="next" title="github+hexo收集的零碎资料">
+                <i class="fa fa-chevron-left"></i> github+hexo收集的零碎资料
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="sy" />
+            
+              <p class="site-author-name" itemprop="name">sy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一节-创建工程"><span class="nav-number">1.</span> <span class="nav-text">第一节 创建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二节-添加尾焰"><span class="nav-number">2.</span> <span class="nav-text">第二节 添加尾焰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三节-添加星空背景"><span class="nav-number">3.</span> <span class="nav-text">第三节 添加星空背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四节-创建子弹"><span class="nav-number">4.</span> <span class="nav-text">第四节 创建子弹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五节-解决子弹自动销毁"><span class="nav-number">5.</span> <span class="nav-text">第五节 解决子弹自动销毁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五节-飞船的销毁"><span class="nav-number">6.</span> <span class="nav-text">第五节 飞船的销毁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六节-小行星运动、随机产生、批量生成"><span class="nav-number">7.</span> <span class="nav-text">第六节 小行星运动、随机产生、批量生成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思考"><span class="nav-number">7.0.1.</span> <span class="nav-text">思考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七节-添加音效"><span class="nav-number">8.</span> <span class="nav-text">第七节 添加音效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备注：添加音频方法有两种："><span class="nav-number">9.</span> <span class="nav-text">备注：添加音频方法有两种：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vector3类型扩展"><span class="nav-number">10.</span> <span class="nav-text">Vector3类型扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'DNy7i3qBxlrgLUeYBl8upjJv-gzGzoHsz',
+        appKey: 'dKvYTq1uzVsxPOKi5rQuaCCs',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
