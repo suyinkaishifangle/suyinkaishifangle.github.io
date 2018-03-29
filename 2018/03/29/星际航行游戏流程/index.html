@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="我是sy">
 <meta property="og:description" content="第一节 创建工程1、创建3D项目工程   创建一个文件夹，命名为_Scene   新建场景，然后保存【CTRL+S】，将其命名为myscene2、设置游戏窗口的大小  400*600   选择文件菜单，单击Build settings3、拖动飞船模型进入层级视图，重置其transform属性  重命名为Player4、添加刚体组件5、取消使用重力选项6、为飞船添加网格碰撞体7、勾选  Convex">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T07:24:15.785Z">
+<meta property="og:updated_time" content="2018-03-29T12:31:36.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="星际航行游戏流程">
 <meta name="twitter:description" content="第一节 创建工程1、创建3D项目工程   创建一个文件夹，命名为_Scene   新建场景，然后保存【CTRL+S】，将其命名为myscene2、设置游戏窗口的大小  400*600   选择文件菜单，单击Build settings3、拖动飞船模型进入层级视图，重置其transform属性  重命名为Player4、添加刚体组件5、取消使用重力选项6、为飞船添加网格碰撞体7、勾选  Convex">
@@ -361,7 +361,7 @@
 <h2 id="第七节-添加音效"><a href="#第七节-添加音效" class="headerlink" title="第七节 添加音效"></a>第七节 添加音效</h2><p>57、音效的添加：<br>58：调整Project视图为单列布局，展开<br>Audio文件夹查看其中的音频文件；<br>59：展开预制体Prefabs文件夹，展开Explosions<br>文件夹，查看爆炸效果的预制体资源；<br>60、添加行星爆炸音效，将Audio文件夹中的explosion_asteroid音频<br>拖动到预制体资源explosion_asteroid上；<br>61、添加飞船爆炸音效，将Audio文件夹中的explosion_player音频<br>拖动到预制体资源explosion_player上；<br>62、选中预制体资源explosion_asteroid，在<br>检视视图中观察组件Audio Source<br>63、选中预制体资源explosion_player，在其检视<br>视图中观察组件Audio Source<br>64、勾选Audio Source中的Play On Awake,在唤醒时<br>自动播放；<br>65：添加飞船射击音频<br>将weapon_player音频文件拖动到飞船对象上；<br>66、不要勾选Play On Awake;<br>67、打开PlayerController.cs脚本文件，在脚本中的Fire1响应的if语句中添加一行代码：<br>GetComponent<audiosource>().Play();</audiosource></p>
 <h2 id="备注：添加音频方法有两种："><a href="#备注：添加音频方法有两种：" class="headerlink" title="备注：添加音频方法有两种："></a>备注：添加音频方法有两种：</h2><p>（1）直接拖动音频文件到游戏对象或者预制体资源上；<br>（2）选取游戏对象或者预制体资源，在inspector视图中<br>选择Add  Component，选择Audio，选择Audio Source<br>然后拖动音频资源到Audio Source的AudioClip输入框内；<br>68、添加背景音效，仿照上述方法（2）添加背景音效<br>添加到GameController游戏对象上；<br>勾选Play On Awake<br>如何让背景音效循环播放？<br>勾选Loop选项<br>69、添加计分文本<br>单击菜单GameObject，选择UI子菜单，单击Text选项，创建文本；<br>70、观察层级视图中的文本选项：<br>将Text重命名为ScoreText;表示得分信息；<br>71、选择ScoreText，在inspector视图中设置其<br>Text文本属性，输入该文本默认显示的文字内容；<br>72、调整ScoreText的文本大小、颜色、位置；<br>还可调整ScoreText的width和height<br>73、删除层级视图中的EventSystem项<br>74、当子弹击中小行星时让分值增加；<br>    增加分值后更新得分信息；<br>75、打开GameController.cs脚本：<br>添加属性信息：添加代码<br>76、打开DestroyByContact.cs脚本<br>添加属性：添加代码<br>77、回到层级视图，选择GameController游戏对象，在其inspector<br>属性中填充ScoreText文本框；<br>78、选择Asteroid预制体，在其inspector<br>属性中填充ScoreValue文本框；</p>
 <h2 id="Vector3类型扩展"><a href="#Vector3类型扩展" class="headerlink" title="Vector3类型扩展"></a>Vector3类型扩展</h2><p>Mathf.Clamp（）<br>float value<br>float xmin<br>float xmax<br>static float Clamp(float value,float xmin,float xmax)<br>若value的数值小于xmin,则返回xmin;若value的数值大于xmax，则返回xmax;<br>x:  -6     6<br>z:  -4    14</p>
-<p>素材：<a href=""></a></p>
+<p>素材：链接: <a href="https://pan.baidu.com/s/1LZq4Px_mS4ek26KAmMgHwg" target="_blank" rel="noopener">https://pan.baidu.com/s/1LZq4Px_mS4ek26KAmMgHwg</a> 密码: 5pvx</p>
 
       
     </div>
